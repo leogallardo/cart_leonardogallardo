@@ -1,6 +1,5 @@
 import React from 'react';
 import CartWidget from './CartWidget';
-import NavbarMenuItem from './NavbarMenuItem';
 
 const Navbar = () => {
   return (
@@ -27,21 +26,33 @@ const Navbar = () => {
             </a>
 
             <div className="hidden ml-10 space-x-8 lg:block">
-              <NavbarMenuItem text="Link 01" url="#1"></NavbarMenuItem>
-              <NavbarMenuItem text="Link 02" url="#2"></NavbarMenuItem>
-              <NavbarMenuItem text="Link 03" url="#3"></NavbarMenuItem>
+              <a href="#1" className="text-base font-medium text-white hover:text-sky-200">
+                Link 01
+              </a>
+              <a href="#2" className="text-base font-medium text-white hover:text-sky-200">
+                Link 02
+              </a>
+              <a href="#3" className="text-base font-medium text-white hover:text-sky-200">
+                Link 03
+              </a>
             </div>
           </div>
 
           <div className="ml-10 space-x-4">
-            <CartWidget></CartWidget>
+            <CartWidget />
           </div>
         </div>
 
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
-          <NavbarMenuItem text="Link 01" url="#1"></NavbarMenuItem>
-          <NavbarMenuItem text="Link 02" url="#2"></NavbarMenuItem>
-          <NavbarMenuItem text="Link 03" url="#3"></NavbarMenuItem>
+          <a href="#1" className="text-base font-medium text-white hover:text-sky-200">
+            Link 01
+          </a>
+          <a href="#2" className="text-base font-medium text-white hover:text-sky-200">
+            Link 02
+          </a>
+          <a href="#3" className="text-base font-medium text-white hover:text-sky-200">
+            Link 03
+          </a>
         </div>
       </nav>
     </header>
