@@ -6,15 +6,17 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/collectables" element={<ItemListContainer category="Collectables" />} />
-        <Route path="/category/comics" element={<ItemListContainer category="Comics" />} />
-        <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-      </Routes>
-    </BrowserRouter>
+    <div class="flex flex-col h-screen">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/collectables" element={<ItemListContainer category="Collectables" />} />
+          <Route path="/category/comics" element={<ItemListContainer category="Comics" />} />
+          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

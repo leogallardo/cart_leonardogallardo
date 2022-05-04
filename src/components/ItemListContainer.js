@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { items as itemsData } from '../data/items';
-import ItemsList from './ItemsList';
+import ItemList from './ItemList';
+import Loader from './Loader';
 
 const ItemListContainer = (props) => {
+  const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const ItemListContainer = (props) => {
         } else {
           resolve(itemsData);
         }
+        setLoading(false);
       }, 2000);
     });
 
@@ -26,7 +29,7 @@ const ItemListContainer = (props) => {
       });
   }, [props.category]);
 
-  return <ItemsList itemsData={items} />;
+  return <>{loading ? <Loader /> : <ItemList itemsData={items} />}</>;
 };
 
 export default ItemListContainer;
