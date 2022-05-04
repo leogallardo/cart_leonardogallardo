@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Item = ({ itemData }) => {
   return (
     <div className="group relative bg-white border border-gray-200 rounded-lg flex flex-col overflow-hidden">
@@ -9,6 +11,9 @@ const Item = ({ itemData }) => {
         <p className="text-sm italic text-gray-500">{itemData.brand}</p>
         <div className="flex-1 flex flex-col justify-end">
           <p className="text-base font-medium text-gray-900">${itemData.price}</p>
+          <Link to={`../item/${itemData.id}`} className="text-base font-medium text-blue-600 mt-2">
+            View details
+          </Link>
         </div>
       </div>
     </div>

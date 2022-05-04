@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import CartWidget from './CartWidget';
 
 const Navbar = () => {
@@ -7,7 +7,7 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
         <div className="w-full py-6 flex items-center justify-between border-b border-sky-600 lg:border-none">
           <div className="flex items-center">
-            <a href="#home" className="flex items-center text-white">
+            <Link to="/" className="flex items-center text-white">
               <svg className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
@@ -23,18 +23,15 @@ const Navbar = () => {
                 />
               </svg>
               <span className="font-bold ml-2">CH Carrito</span>
-            </a>
+            </Link>
 
             <div className="hidden ml-10 space-x-8 lg:block">
-              <a href="#1" className="text-base font-medium text-white hover:text-sky-200">
-                Link 01
-              </a>
-              <a href="#2" className="text-base font-medium text-white hover:text-sky-200">
-                Link 02
-              </a>
-              <a href="#3" className="text-base font-medium text-white hover:text-sky-200">
-                Link 03
-              </a>
+              <Link to="category/collectables/" className="text-base font-medium text-white hover:text-sky-200">
+                Collectables
+              </Link>
+              <Link to="category/comics/" className="text-base font-medium text-white hover:text-sky-200">
+                Comics
+              </Link>
             </div>
           </div>
 
@@ -44,15 +41,12 @@ const Navbar = () => {
         </div>
 
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
-          <a href="#1" className="text-base font-medium text-white hover:text-sky-200">
-            Link 01
-          </a>
-          <a href="#2" className="text-base font-medium text-white hover:text-sky-200">
-            Link 02
-          </a>
-          <a href="#3" className="text-base font-medium text-white hover:text-sky-200">
-            Link 03
-          </a>
+          <Link to="category/collectables/" className="text-base font-medium text-white hover:text-sky-200">
+            Collectables
+          </Link>
+          <Link to="category/comics/" className="text-base font-medium text-white hover:text-sky-200">
+            Comics
+          </Link>
         </div>
       </nav>
     </header>

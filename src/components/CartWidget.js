@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CartWidget = () => {
   return (
     <a href="#cart" className="inline-block text-base font-medium">
