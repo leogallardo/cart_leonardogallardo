@@ -26,10 +26,10 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden ml-10 space-x-8 lg:block">
-              <Link to="category/collectables/" className="text-base font-medium text-white hover:text-sky-200">
+              <Link to="category/collectables" className="text-base font-medium text-white hover:text-sky-200">
                 Collectables
               </Link>
-              <Link to="category/comics/" className="text-base font-medium text-white hover:text-sky-200">
+              <Link to="category/comics" className="text-base font-medium text-white hover:text-sky-200">
                 Comics
               </Link>
             </div>
@@ -41,10 +41,10 @@ const Navbar = () => {
         </div>
 
         <div className="py-4 flex flex-wrap justify-center space-x-6 lg:hidden">
-          <Link to="category/collectables/" className="text-base font-medium text-white hover:text-sky-200">
+          <Link to="category/collectables" className="text-base font-medium text-white hover:text-sky-200">
             Collectables
           </Link>
-          <Link to="category/comics/" className="text-base font-medium text-white hover:text-sky-200">
+          <Link to="category/comics" className="text-base font-medium text-white hover:text-sky-200">
             Comics
           </Link>
         </div>
