@@ -18,12 +18,18 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* helpers */
+.h50px {
+  height: 50px;
+}
+
+/* loader */
 .loader {
   border-top-color: #3498db;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
 }
-
 @-webkit-keyframes spinner {
   0% {
     -webkit-transform: rotate(0deg);
@@ -32,7 +38,6 @@ code {
     -webkit-transform: rotate(360deg);
   }
 }
-
 @keyframes spinner {
   0% {
     transform: rotate(0deg);

@@ -9,6 +9,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '7599',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/boss-star-wars1-f225616154b85d607f16458186075874-640-0.jpg',
+    stock: 0,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const items = [
     price: '6399',
     image:
       'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/funko-ahsoka-hooded-467-star-wars-the-mandalorian-star-wars1-44f58a179538b5059516458170448008-640-0.jpg',
+    stock: 6,
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '7099',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/xgcol2881-6ec1ec05504e9dc4e716215220419116-640-0.jpg',
+    stock: 2,
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ export const items = [
     price: '7099',
     image:
       'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/funko-379-child-with-frog_adobespark1-0d8a1f3a643747363216358003962615-640-0.jpeg',
+    stock: 7,
   },
   {
     id: 5,
@@ -52,6 +56,7 @@ export const items = [
     price: '7099',
     image:
       'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/figura-pop-star-wars-rise-of-skywalker-kylo-ren-supreme-leader1-c6cd98f24d3d75ec8a15795421526897-640-0.jpg',
+    stock: 8,
   },
   {
     id: 6,
@@ -62,6 +67,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '100',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/8896983988621-c680d1a61a0885c48415795422322927-640-0.jpg',
+    stock: 11,
   },
   {
     id: 7,
@@ -72,6 +78,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '6999',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/_57-121-9a71223be3f003a3e915654620088251-640-0.jpg',
+    stock: 32,
   },
   {
     id: 8,
@@ -82,6 +89,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '7299',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/med600_col-fun37667-011-cffc7f8fbe6388dbac15755669319544-640-0.jpg',
+    stock: 12,
   },
   {
     id: 9,
@@ -92,6 +100,7 @@ export const items = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     price: '7299',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/_57-141-90dd5237f6c214381115654620132132-640-0.jpg',
+    stock: 3,
   },
   {
     id: 10,
@@ -102,6 +111,7 @@ export const items = [
       'El cazarrecompensas más temido de la galaxia fue asesinado por un grupo de matones que trabajan para el gobernador Purton, o al menos eso es lo que dicen todos los noticiarios espaciales. Después de enterarse de la muerte de Fett, Connor Freeman deberá asumir ciertas responsabilidades, sin saber que la mujer de quien se enamoró, Sintas Vel, tiene un pasado en común con Boba, pues él es el padre de su hija.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-17_ccexpress1-a2bb3155016732570216437508924701-640-0.jpeg',
+    stock: 0,
   },
   {
     id: 11,
@@ -113,6 +123,7 @@ export const items = [
     price: '769',
     image:
       'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-legends-coleccion-vol-14_ccexpress1-a7e56ed4b2a469145716437494932004-640-0.jpeg',
+    stock: 1,
   },
   {
     id: 12,
@@ -123,6 +134,7 @@ export const items = [
       'El Rector Gentis, máximo líder de las academias imperiales de la Galaxia, está planeando derrocar a Palpatine para convertirse en el nuevo Emperador. De su lado tiene a cientos de jóvenes cadetes que están dispuestos a morir por él. Sin embargo, Palpatine cuenta con un arma siniestra y sin compasión: Darth Vader, quien, junto con Moff Trachta y el teniente Laurita Tohm, se encargará de dejarle claro a Gentis quién manda en la Galaxia.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-12_ccexpress1-71c71584625c1d867516437454122624-640-0.jpeg',
+    stock: 6,
   },
   {
     id: 13,
@@ -133,6 +145,7 @@ export const items = [
       'Muchas veces los lazos familiares, o su ruptura, han provocado profundas consecuencias en la historia de la Galaxia: se han librado guerras, han caído gobiernos y varias tragedias han sido evitadas. Aunque en realidad no son padre e hijo, Jango Fett y Boba Fett comparten, literalmente, la misma sangre. Pero Boba descubrirá que algunas decisiones tomadas por Jango afectarán profundamente su propia vida.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-10_ccexpress1-9f9ddef6133f3a7c3216437447861069-640-0.jpeg',
+    stock: 0,
   },
   {
     id: 14,
@@ -143,6 +156,7 @@ export const items = [
       'Una fuerza maligna está a punto de liberarse. Parlan Spinner, el hilandero de la muerte, roba un arma secreta que los viejos Jedi han mantenido oculta durante miles de años para evitar el caos que podría ocasionar en toda la Galaxia. Se trata de Lord Dreypa, uno de los principales fundadores de la Orden Sith. Ahora este ser aterrador está libre y amenaza con destruir la tribu perdida de los Sith.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-7_ccexpress1-dab8179a47771142e116437444824677-640-0.jpeg',
+    stock: 0,
   },
   {
     id: 15,
@@ -153,6 +167,7 @@ export const items = [
       'La subteniente Nanda es elegida por Darth Vader para ser su asistente durante cinco días. Al principio lo consideró un gran logro en su carrera como soldado del Imperio, pero nunca imaginó el miedo, la intimidación y el uso de la fuerza bruta que el caballero Sith ejerce sobre toda la Galaxia. Ahora teme por su vida.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-3_ccexpress1-ec242483fa060bdbf016437439847699-640-0.jpeg',
+    stock: 1,
   },
   {
     id: 16,
@@ -163,6 +178,7 @@ export const items = [
       'Muchos buscan a Luke Skywalker para cobrar las recompensas que hay por él. Algunas pagan miles de créditos por capturarlo vivo, pero muerto vale millones… Con el objetivo de tenderle una trampa a Vader, el Príncipe Xizor está dispuesto gastar cualquier cantidad de dinero en la muerte de Luke, pero el Señor Oscuro necesita a su hijo vivo y no permitirá que Xizor obtenga lo que quiere tan fácilmente.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-23_ccexpress1-077decd897da962f2116437523150028-640-0.jpeg',
+    stock: 2,
   },
   {
     id: 17,
@@ -173,6 +189,7 @@ export const items = [
       'Leia, Luke, Han y Chewbacca tienen la misión de entrenar reclutas que estén dispuestos a luchar contra la tiranía del Imperio. Pero ellos saben que el entrenamiento más eficaz es aquel que se da en misiones reales, aunque la vida de los novatos esté en peligro. Acompaña a los héroes más notorios de la Galaxia en esta nueva aventura en la que la muerte acecha cada uno de sus movimientos.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-5_ccexpress1-a6255b00ed6297d07616437441113381-640-0.jpeg',
+    stock: 5,
   },
   {
     id: 18,
@@ -183,5 +200,6 @@ export const items = [
       'Vienen de distintos lugares y tienen las vidas más increíbles y dramáticas. Aurra Sing odia la Orden Jedi por el dolor que sufrió mientras pertenecía a ella como Padawan; Kir Kanos, alias Kenix Kil, un antiguo guardia del Emperador, busca venganza después de que traicionaron y asesinaron a su maestro; y Jix, uno de los pocos hombres por los que Darth Vader siente algo de gratitud. Estas son sus historias, complementadas con otros relatos narrados por canallas y borrachos en uno de los lugares más peligrosos de la Galaxia: Mos Eisley.',
     price: '769',
     image: 'https://d3ugyf2ht6aenh.cloudfront.net/stores/001/017/593/products/star-wars-13_ccexpress1-4b1ef9bf8fbcbd96dc16437457516371-640-0.jpeg',
+    stock: 4,
   },
 ];
