@@ -42,7 +42,7 @@ const CartItemsList = () => {
                     {cartItems.map((cartItem) => (
                       <span
                         key={cartItem.itemId}
-                        class="mx-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                        className="mx-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
                       >
                         Item: {cartItem.itemId} - Amount: {cartItem.itemAmount}
                       </span>
