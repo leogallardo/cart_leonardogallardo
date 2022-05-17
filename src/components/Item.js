@@ -15,6 +15,8 @@ const Item = ({ itemData }) => {
           <Link to={`../item/${itemData.id}`} className="text-base font-medium text-blue-600 mt-2">
             View details
           </Link>
+
+          <ItemCount itemData={itemData} />
         </div>
       </div>
     </div>

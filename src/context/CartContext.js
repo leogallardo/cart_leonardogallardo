@@ -4,7 +4,6 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [inCart, setinCart] = useState(false);
 
   // función que quiero que sea parte del context
   const updateCart = (itemData, itemAmount) => {
@@ -20,7 +19,6 @@ const CartProvider = ({ children }) => {
         updatedCartItems.push({ item: itemData, itemAmount: itemAmount });
       }
       setCartItems(updatedCartItems);
-      setinCart(true);
     }
   };
 
@@ -30,7 +28,6 @@ const CartProvider = ({ children }) => {
     // create a new array without the removed item
     const updatedCartItems = currentCartItems.filter((i) => i.item.id !== itemId);
     setCartItems(updatedCartItems);
-    setinCart(false);
   };
 
   // función que quiero que sea parte del context
@@ -41,7 +38,6 @@ const CartProvider = ({ children }) => {
   // estas son las cosas que hago que sean accesibles desde el contest, a través del value
   const context = {
     cartItems,
-    inCart,
     updateCart,
     removeFromCart,
     emptyCart,

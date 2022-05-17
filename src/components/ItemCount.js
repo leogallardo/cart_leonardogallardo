@@ -1,21 +1,31 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
 const ItemCount = ({ itemData }) => {
-  const { cartItems, inCart, updateCart, removeFromCart } = useContext(CartContext);
+  const { cartItems, updateCart, removeFromCart } = useContext(CartContext);
   const [counter, setCounter] = useState(0);
+
+  // el inCart me sirve tenerlo acá, ya que lo necesito para mostrar/ocultar los botoncitos de agregar/quitar productos
+  const [inCart, setinCart] = useState(false);
+  // acá lo que hago es directamente vincular el amount que está en el carrito, con el amount que está en el count, para poder cambiar de páginas y cuando vuelvo siga estando sincronizado (en el ejemplo de stackblitz esto no pasaba)
+  useEffect(() => {
+    if (cartItems.filter((i) => i.item.id === itemData.id).length > 0) {
+      // update the amount if item already existed
+      const currentItemAmount = cartItems.findIndex((i) => i.item.id === itemData.id);
+      setCounter(cartItems[currentItemAmount].itemAmount);
+      setinCart(true);
+    }
+  }, [cartItems, itemData.id]);
 
   // when users click "+"
   const handleAdd = () => {
     const value = counter + 1;
-    setCounter(value);
     updateCart(itemData, value);
   };
 
   // when users click "-"
   const handleSubstract = () => {
     const value = counter - 1;
-    setCounter(value);
     updateCart(itemData, value);
   };
 
@@ -24,6 +34,7 @@ const ItemCount = ({ itemData }) => {
     const value = counter - 1;
     setCounter(value);
     removeFromCart(itemData.id);
+    setinCart(false);
   };
 
   return (
@@ -72,7 +83,7 @@ const ItemCount = ({ itemData }) => {
           <button
             onClick={handleAdd}
             className={`py-3 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 h-full rounded-r select-none cursor-pointer outline-none items-center justify-center${
-              counter >= itemData.stock ? ' pointer-events-none opacity-75' : ''
+              counter >= itemData.stock && ' pointer-events-none opacity-75'
             }`}
           >
             <span className="m-auto text-2xl leading-4 font-thin">
