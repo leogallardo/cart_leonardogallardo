@@ -1,23 +1,7 @@
-import { useState, useContext, useEffect } from 'react';
-import { CartContext } from './../context/CartContext';
 import './ItemDetail.css';
+import ItemCount from './ItemCount';
 
 const ItemDetail = ({ itemData }) => {
-  const { cartItems, addToCart, removeFromCart, emptyCart } = useContext(CartContext);
-  const [counter, setCounter] = useState(0);
-  const incrementCounter = () => setCounter(counter + 1);
-  const decrementCounter = () => setCounter(counter - 1);
-
-  const [isInCart, setIsInCart] = useState(false);
-
-  useEffect(() => {
-    if (cartItems.filter((i) => i.itemId === itemData.id).length > 0) {
-      setIsInCart(true);
-    } else {
-      setIsInCart(false);
-    }
-  }, [cartItems, itemData.id]);
-
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
@@ -117,66 +101,6 @@ const ItemDetail = ({ itemData }) => {
               </div>
             )}
           </section>
-
-          <div className="mt-6 flex gap-4 rounded-lg h50px">
-            <div className="flex-none flex items-center justify-center">
-              <button
-                onClick={() => {
-                  removeFromCart(itemData.id);
-                }}
-                className="py-3 px-4 bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full rounded select-none cursor-pointer outline-none items-center justify-center"
-              >
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 m-auto"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    />
-                  </svg>
-                </span>
-              </button>
-            </div>
-
-            <div className="grow flex items-center justify-center">
-              <button
-                onClick={decrementCounter}
-                className={`py-3 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 h-full rounded-l select-none cursor-pointer outline-none items-center justify-center${
-                  counter <= 0 ? ' pointer-events-none opacity-75' : ''
-                }`}
-              >
-                <span className="m-auto text-2xl leading-4 font-thin">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-              </button>
-              <span className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black md:text-base cursor-default flex items-center justify-center text-gray-700 select-none py-3 px-4 h50px">
-                {counter}
-              </span>
-              <button
-                onClick={incrementCounter}
-                className={`py-3 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 h-full rounded-r select-none cursor-pointer outline-none items-center justify-center${
-                  counter >= itemData.stock ? ' pointer-events-none opacity-75' : ''
-                }`}
-              >
-                <span className="m-auto text-2xl leading-4 font-thin">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </span>
-              </button>
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-row w-full rounded-lg relative bg-transparent h50px"></div>
         </div>
 
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
@@ -186,8 +110,8 @@ const ItemDetail = ({ itemData }) => {
         </div>
 
         <div className="mt-6 lg:max-w-lg lg:col-start-1 lg:row-start-2 lg:self-start">
-          <section>
-            {itemData.stock === 0 ? (
+          {itemData.stock === 0 ? (
+            <div className="flex items-center justify-center h50px">
               <button
                 type="button"
                 className="w-full bg-gray-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 disabled:opacity-75"
@@ -195,32 +119,10 @@ const ItemDetail = ({ itemData }) => {
               >
                 Not in stock
               </button>
-            ) : (
-              <div>
-                {isInCart ? 'ya esta en el carrito' : 'todavía no está'}
-
-                <button
-                  onClick={() => {
-                    addToCart(itemData.id, counter);
-                  }}
-                  type="button"
-                  className="mt-6 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
-                >
-                  Add to cart
-                </button>
-
-                {/* <button
-                  onClick={() => {
-                    removeFromCart(itemData.id);
-                  }}
-                  type="button"
-                  className="mt-6 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
-                >
-                  Remove from cart
-                </button> */}
-              </div>
-            )}
-          </section>
+            </div>
+          ) : (
+            <ItemCount itemData={itemData} />
+          )}
         </div>
       </div>
     </div>

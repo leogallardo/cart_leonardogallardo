@@ -4,21 +4,23 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const [inCart, setinCart] = useState(false);
 
   // función que quiero que sea parte del context
-  const addToCart = (itemId, itemAmount) => {
+  const updateCart = (itemData, itemAmount) => {
     if (itemAmount !== 0) {
       const updatedCartItems = [...cartItems];
 
-      if (updatedCartItems.filter((i) => i.itemId === itemId).length > 0) {
+      if (updatedCartItems.filter((i) => i.item.id === itemData.id).length > 0) {
         // update the amount if item already existed
-        const itemIndex = updatedCartItems.findIndex((i) => i.itemId === itemId);
+        const itemIndex = updatedCartItems.findIndex((i) => i.item.id === itemData.id);
         updatedCartItems[itemIndex].itemAmount = itemAmount;
       } else {
         // add the element if it didnt exist
-        updatedCartItems.push({ itemId: itemId, itemAmount: itemAmount });
+        updatedCartItems.push({ item: itemData, itemAmount: itemAmount });
       }
       setCartItems(updatedCartItems);
+      setinCart(true);
     }
   };
 
@@ -26,8 +28,9 @@ const CartProvider = ({ children }) => {
   const removeFromCart = (itemId) => {
     const currentCartItems = [...cartItems];
     // create a new array without the removed item
-    const updatedCartItems = currentCartItems.filter((i) => i.itemId !== itemId);
+    const updatedCartItems = currentCartItems.filter((i) => i.item.id !== itemId);
     setCartItems(updatedCartItems);
+    setinCart(false);
   };
 
   // función que quiero que sea parte del context
@@ -38,7 +41,8 @@ const CartProvider = ({ children }) => {
   // estas son las cosas que hago que sean accesibles desde el contest, a través del value
   const context = {
     cartItems,
-    addToCart,
+    inCart,
+    updateCart,
     removeFromCart,
     emptyCart,
   };
