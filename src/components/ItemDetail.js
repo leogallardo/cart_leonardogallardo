@@ -109,20 +109,8 @@ const ItemDetail = ({ itemData }) => {
           </div>
         </div>
 
-        <div className="mt-6 lg:max-w-lg lg:col-start-1 lg:row-start-2 lg:self-start">
-          {itemData.stock === 0 ? (
-            <div className="flex items-center justify-center h50px">
-              <button
-                type="button"
-                className="w-full bg-gray-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-500 disabled:opacity-75"
-                disabled="disabled"
-              >
-                Not in stock
-              </button>
-            </div>
-          ) : (
-            <ItemCount itemData={itemData} />
-          )}
+        <div className="mt-6">
+          <ItemCount itemData={itemData} />
         </div>
       </div>
     </div>

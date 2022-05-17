@@ -16,7 +16,9 @@ const Item = ({ itemData }) => {
             View details
           </Link>
 
-          <ItemCount itemData={itemData} />
+          <div className="mt-6">
+            <ItemCount itemData={itemData} />
+          </div>
         </div>
       </div>
     </div>
