@@ -15,7 +15,7 @@ const CartItemsList = () => {
   return (
     <>
       {cartItemsCounter > 0 ? (
-        <div className="mt-10 inset-x-0 pb-2 sm:pb-5 z-10">
+        <div className="bg-gray-100 pt-5 inset-x-0 pb-2 sm:pb-5 z-10">
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="p-2 rounded-lg bg-indigo-600 shadow-lg sm:p-3">
               <div className="flex items-center justify-between flex-wrap">
@@ -37,17 +37,23 @@ const CartItemsList = () => {
                       />
                     </svg>
                   </span>
-                  <p className="ml-3 font-medium text-white truncate">
-                    Items en el carrito:
-                    {cartItems.map((cartItem) => (
-                      <span
-                        key={cartItem.item.id}
-                        className="mx-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
-                      >
-                        Item: {cartItem.item.id} - Amount: {cartItem.itemAmount}
-                      </span>
-                    ))}
-                  </p>
+                  <div>
+                    <p className="ml-3 mb-2 text-xs font-medium text-white">
+                      Todo esto se va en la versión final, es para ir viendo en tiempo real cómo se agregan cosas al carrito. Eventualmente estará
+                      como un menú.
+                    </p>
+                    <p className="ml-3 font-medium text-white">Items en el carrito:</p>
+                    <p className="ml-3 font-medium text-white truncate">
+                      {cartItems.map((cartItem) => (
+                        <span
+                          key={cartItem.item.id}
+                          className="mr-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                        >
+                          Item: {cartItem.item.id} - Amount: {cartItem.itemAmount}
+                        </span>
+                      ))}
+                    </p>
+                  </div>
                 </div>
                 <div className="order-3 mt-2 w-full sm:order-2 sm:mt-0 sm:w-auto">
                   <button
@@ -63,7 +69,7 @@ const CartItemsList = () => {
                     to="/cart"
                     className="ml-5 inline-block items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50"
                   >
-                    Checkout
+                    View cart
                   </Link>
                 </div>
               </div>

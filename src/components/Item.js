@@ -17,7 +17,7 @@ const Item = ({ itemData }) => {
           </Link>
 
           <div className="mt-6">
-            <ItemCount itemData={itemData} />
+            <ItemCount itemData={itemData} hasTrashCan={true} />
           </div>
         </div>
       </div>

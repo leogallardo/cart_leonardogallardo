@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../context/CartContext';
 
-const ItemCount = ({ itemData }) => {
+const ItemCount = ({ itemData, hasTrashCan }) => {
   const { cartItems, updateCart, removeFromCart } = useContext(CartContext);
   const [counter, setCounter] = useState(0);
+  const [leftButtonIsTrashCan, setLeftButtonIsTrashCan] = useState(false);
   const [inStock, setInStock] = useState(itemData.stock);
 
   // el inCart me sirve tenerlo acá, ya que lo necesito para mostrar/ocultar los botoncitos de agregar/quitar productos
@@ -18,27 +19,41 @@ const ItemCount = ({ itemData }) => {
     }
   }, [cartItems, itemData.id]);
 
+  // acá veo si rendereo el tachito de basura o un minus en el contador
+  useEffect(() => {
+    if (hasTrashCan) {
+      if (counter <= 1) {
+        setLeftButtonIsTrashCan(true);
+      } else {
+        setLeftButtonIsTrashCan(false);
+      }
+    } else {
+      setLeftButtonIsTrashCan(false);
+    }
+  }, [counter, hasTrashCan]);
+
   // when users click "+"
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     const value = counter + 1;
     updateCart(itemData, value);
   };
 
   // when users click "-"
-  const handleSubstract = () => {
+  const handleSubstract = (e) => {
+    e.preventDefault();
     const value = counter - 1;
     updateCart(itemData, value);
   };
 
   // when users click the trash icon
-  const handleRemove = () => {
+  const handleRemove = (e) => {
+    e.preventDefault();
     const value = counter - 1;
     setCounter(value);
     removeFromCart(itemData.id);
     setInCart(false);
   };
-
-  console.log(inStock);
 
   return (
     <div className="flex items-center justify-center h50px">
@@ -46,7 +61,7 @@ const ItemCount = ({ itemData }) => {
         <>
           {inCart ? (
             <>
-              {counter <= 1 ? (
+              {leftButtonIsTrashCan ? (
                 <button
                   onClick={handleRemove}
                   className="py-3 px-4 bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full rounded-l select-none cursor-pointer outline-none items-center justify-center"
@@ -71,7 +86,9 @@ const ItemCount = ({ itemData }) => {
               ) : (
                 <button
                   onClick={handleSubstract}
-                  className="py-3 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 h-full rounded-l select-none cursor-pointer outline-none items-center justify-center"
+                  className={`py-3 px-4 bg-gray-300 text-gray-600 hover:bg-gray-400 h-full rounded-l select-none cursor-pointer outline-none items-center justify-center${
+                    counter <= 1 && ' pointer-events-none opacity-75'
+                  }`}
                 >
                   <span className="m-auto text-2xl leading-4 font-thin">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -108,6 +125,29 @@ const ItemCount = ({ itemData }) => {
                 Add to cart
               </button>
             </>
+          )}
+          {!hasTrashCan && (
+            <button
+              onClick={handleRemove}
+              className="py-3 px-4 ml-4 text-indigo-600 hover:text-indigo-700  h-full select-none cursor-pointer outline-none items-center justify-center"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6 m-auto"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </svg>
+              </span>
+            </button>
           )}
         </>
       ) : (

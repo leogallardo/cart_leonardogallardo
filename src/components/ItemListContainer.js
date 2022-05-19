@@ -9,7 +9,6 @@ const ItemListContainer = () => {
   const { catId } = useParams();
   const [items, setItems] = useState([]);
 
-  console.log(catId);
   useEffect(() => {
     setLoading(true);
     const getItems = new Promise((resolve, reject) => {

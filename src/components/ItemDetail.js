@@ -110,7 +110,7 @@ const ItemDetail = ({ itemData }) => {
         </div>
 
         <div className="mt-6">
-          <ItemCount itemData={itemData} />
+          <ItemCount itemData={itemData} hasTrashCan={true} />
         </div>
       </div>
     </div>
