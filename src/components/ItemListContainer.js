@@ -1,38 +1,34 @@
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { items as itemsData } from '../data/items';
 import ItemList from './ItemList';
 import Loader from './Loader';
 
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const { catId } = useParams();
-  const [items, setItems] = useState([]);
+  const [itemsData, setItemsData] = useState([]);
 
   useEffect(() => {
     setLoading(true);
-    const getItems = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        // added a filter so routes can have categories and show only items with said category attached. If no category prop, then show them all
-        if (catId) {
-          resolve(itemsData.filter((item) => item.category === catId));
-        } else {
-          resolve(itemsData);
-        }
-        setLoading(false);
-      }, 2000);
-    });
+    const db = getFirestore();
+    const itemsCollection = collection(db, 'items');
+    let q = itemsCollection;
 
-    getItems
-      .then((result) => {
-        setItems(result);
-      })
-      .catch((err) => {
-        console.log('There was a mistake with the getItems promise', err);
-      });
+    // if there is a category
+    if (catId) {
+      q = query(itemsCollection, where('category', '==', catId));
+    }
+
+    getDocs(q).then((snapshot) => {
+      if (snapshot.size > 0) {
+        const data = snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+        setItemsData(data);
+        setLoading(false);
+      }
+    });
   }, [catId]);
 
-  return <>{loading ? <Loader /> : <ItemList itemsData={items} />}</>;
+  return <>{loading ? <Loader /> : <ItemList itemsData={itemsData} />}</>;
 };
-
 export default ItemListContainer;

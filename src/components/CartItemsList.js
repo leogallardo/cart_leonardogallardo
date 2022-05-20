@@ -43,11 +43,11 @@ const CartItemsList = () => {
                       como un menú.
                     </p>
                     <p className="ml-3 font-medium text-white">Items en el carrito:</p>
-                    <p className="ml-3 font-medium text-white truncate">
+                    <p className="ml-3 font-medium text-white">
                       {cartItems.map((cartItem) => (
                         <span
                           key={cartItem.item.id}
-                          className="mr-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
+                          className="mr-2 mt-2 inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800"
                         >
                           Item: {cartItem.item.id} - Amount: {cartItem.itemAmount}
                         </span>

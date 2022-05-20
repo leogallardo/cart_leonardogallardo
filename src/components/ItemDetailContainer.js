@@ -1,32 +1,28 @@
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { items as itemsData } from '../data/items';
 import ItemDetail from './ItemDetail';
 import Loader from './Loader';
 
 const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
   const { itemId } = useParams();
-  const [item, setItem] = useState([]);
+  const [itemData, setItemData] = useState({});
 
   useEffect(() => {
-    const getItem = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(itemsData.find((item) => item.id == itemId));
-        setLoading(false);
-      }, 2000);
-    });
+    setLoading(true);
+    const db = getFirestore();
+    const item = doc(db, 'items', itemId);
 
-    getItem
-      .then((result) => {
-        setItem(result);
-      })
-      .catch((err) => {
-        console.log('There was a mistake with the getItems promise', err);
-      });
+    getDoc(item).then((snapshot) => {
+      if (snapshot.exists()) {
+        setItemData({ id: snapshot.id, ...snapshot.data() });
+        setLoading(false);
+      }
+    });
   }, [itemId]);
 
-  return <>{loading ? <Loader /> : <ItemDetail itemData={item} />}</>;
+  return <>{loading ? <Loader /> : <ItemDetail itemData={itemData} />}</>;
 };
 
 export default ItemDetailContainer;
