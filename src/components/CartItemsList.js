@@ -1,20 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from './../context/CartContext';
 
 const CartItemsList = () => {
-  const [cartItemsCounter, setCartItemsCounter] = useState();
-  const { cartItems, emptyCart } = useContext(CartContext);
-
-  const cardItemsTotal = cartItems.reduce((s, a) => s + a.itemAmount, 0);
-
-  useEffect(() => {
-    setCartItemsCounter(cardItemsTotal);
-  }, [cardItemsTotal]);
+  const { cartItems, cartItemsAmount, emptyCart } = useContext(CartContext);
 
   return (
     <>
-      {cartItemsCounter > 0 ? (
+      {cartItemsAmount > 0 ? (
         <div className="bg-gray-100 pt-5 inset-x-0 pb-2 sm:pb-5 z-10">
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
             <div className="p-2 rounded-lg bg-indigo-600 shadow-lg sm:p-3">

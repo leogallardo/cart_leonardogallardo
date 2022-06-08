@@ -1,9 +1,10 @@
 import Item from './Item';
 
-const ItemList = ({ itemsData }) => {
+const ItemList = ({ itemsData, title }) => {
   return (
     <div className="bg-gray-100">
-      <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+      <div className="max-w-2xl mx-auto pt-24 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-12">{title}</h1>
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
           {itemsData.map((item) => (
             <Item key={item.id} itemData={item} />

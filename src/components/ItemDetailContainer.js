@@ -11,15 +11,36 @@ const ItemDetailContainer = () => {
 
   useEffect(() => {
     setLoading(true);
-    const db = getFirestore();
-    const item = doc(db, 'items', itemId);
 
-    getDoc(item).then((snapshot) => {
-      if (snapshot.exists()) {
-        setItemData({ id: snapshot.id, ...snapshot.data() });
-        setLoading(false);
+    // getItem() with then
+    // const db = getFirestore();
+    // const item = doc(db, 'items', itemId);
+
+    // getDoc(item).then((snapshot) => {
+    //   if (snapshot.exists()) {
+    //     setItemData({ id: snapshot.id, ...snapshot.data() });
+    //     setLoading(false);
+    //   }
+    // });
+
+    // getItem() with async try await catch
+    const getItem = async () => {
+      const db = getFirestore();
+      const item = doc(db, 'items', itemId);
+      try {
+        const snapshot = await getDoc(item);
+        if (snapshot.exists()) {
+          setItemData({ id: snapshot.id, ...snapshot.data() });
+          setLoading(false);
+        } else {
+          throw TypeError('There was an error: itemId does not exist.');
+        }
+      } catch (error) {
+        console.log('There was an error:', error);
+        setLoading(true);
       }
-    });
+    };
+    getItem();
   }, [itemId]);
 
   return <>{loading ? <Loader /> : <ItemDetail itemData={itemData} />}</>;

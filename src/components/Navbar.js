@@ -6,7 +6,7 @@ const Navbar = () => {
     <>
       <div className="bg-gray-900">
         <div className="max-w-7xl mx-auto h-10 px-4 flex items-center align-middle justify-between sm:px-6 lg:px-8">
-          <p className="m-auto text-white bold">Free shipping on orders above $10000</p>
+          <p className="m-auto text-white font-medium">Free shipping on orders above $10000</p>
         </div>
       </div>
 

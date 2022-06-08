@@ -1,25 +1,26 @@
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
-const ItemCount = ({ itemData, hasTrashCan }) => {
+const ItemCount = ({ itemData, hasTrashCan, hasCartLink }) => {
   const { cartItems, updateCart, removeFromCart } = useContext(CartContext);
   const [counter, setCounter] = useState(0);
   const [leftButtonIsTrashCan, setLeftButtonIsTrashCan] = useState(false);
-  const [inStock, setInStock] = useState(itemData.stock);
-
-  // el inCart me sirve tenerlo acá, ya que lo necesito para mostrar/ocultar los botoncitos de agregar/quitar productos
   const [inCart, setInCart] = useState(false);
-  // acá lo que hago es directamente vincular el amount que está en el carrito, con el amount que está en el count, para poder cambiar de páginas y cuando vuelvo siga estando sincronizado (en el ejemplo de stackblitz esto no pasaba)
+
+  // link the amount of this item in the cart (from the context), with the counter in the span (so we can switch pages and the amount is always persistant)
   useEffect(() => {
     if (cartItems.filter((i) => i.item.id === itemData.id).length > 0) {
-      // update the amount if item already existed
       const currentItemAmount = cartItems.findIndex((i) => i.item.id === itemData.id);
       setCounter(cartItems[currentItemAmount].itemAmount);
       setInCart(true);
+    } else {
+      setCounter(0);
+      setInCart(false);
     }
   }, [cartItems, itemData.id]);
 
-  // acá veo si rendereo el tachito de basura o un minus en el contador
+  // decide whether to render the trash can or the '-' depending on the page
   useEffect(() => {
     if (hasTrashCan) {
       if (counter <= 1) {
@@ -49,15 +50,12 @@ const ItemCount = ({ itemData, hasTrashCan }) => {
   // when users click the trash icon
   const handleRemove = (e) => {
     e.preventDefault();
-    const value = counter - 1;
-    setCounter(value);
     removeFromCart(itemData.id);
-    setInCart(false);
   };
 
   return (
     <div className="flex items-center justify-center h50px">
-      {inStock > 0 ? (
+      {itemData.stock > 0 ? (
         <>
           {inCart ? (
             <>
@@ -114,6 +112,21 @@ const ItemCount = ({ itemData, hasTrashCan }) => {
                   </svg>
                 </span>
               </button>
+
+              {hasCartLink && (
+                <Link
+                  to="/cart"
+                  className="ml-4 py-3 px-4 bg-indigo-600 border border-transparent rounded-md flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                </Link>
+              )}
             </>
           ) : (
             <>

@@ -17,7 +17,7 @@ const Item = ({ itemData }) => {
           </Link>
 
           <div className="mt-6">
-            <ItemCount itemData={itemData} hasTrashCan={true} />
+            <ItemCount itemData={itemData} hasTrashCan={true} hasCartLink={true} />
           </div>
         </div>
       </div>
