@@ -1,8 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
+  const navigate = useNavigate();
+
   // array of items in the cart
   const [cartItems, setCartItems] = useState([]);
 
@@ -73,6 +77,59 @@ const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
+  // save the cart to firebase
+  const [redirectNow, setRedirectNow] = useState(false);
+  const saveCart = () => {
+    // cart buyer
+    const cartBuyer = {
+      name: 'Leonardo',
+      phone: '+542615000000',
+      email: 'leonardo@coderhouse.com',
+    };
+
+    // cart items
+    const processedCartItems = cartItems.map((item) => ({
+      name: item.item.name,
+      price: item.item.price,
+      amount: item.itemAmount,
+    }));
+
+    // cart details
+    const cart = {
+      cartBuyer: cartBuyer,
+      cartItems: processedCartItems,
+      cartItemsAmount: cartItemsAmount,
+      cartSubtotal: cartSubtotal,
+      cartShipping: cartShipping,
+      cartTotal: cartTotal,
+    };
+
+    saveToFirestore(cart);
+  };
+
+  // saveToFirestore() with then
+  // const saveToFirestore = (cart) => {
+  //   const db = getFirestore();
+  //   const salesCollection = collection(db, 'sales');
+  //   addDoc(salesCollection, cart).then((response) => {
+  //     console.log(response.id);
+  //   });
+  // };
+
+  // saveToFirestore() with async try await catch
+  const saveToFirestore = async (cart) => {
+    const db = getFirestore();
+    const salesCollection = collection(db, 'sales');
+    try {
+      const firebaseCall = await addDoc(salesCollection, cart);
+      console.log(firebaseCall.id);
+      emptyCart();
+      navigate('/sales');
+    } catch (error) {
+      console.log('There was an error:', error);
+    }
+  };
+
   // things that i need to access from other files
   const context = {
     cartItems,
@@ -83,6 +140,7 @@ const CartProvider = ({ children }) => {
     updateCart,
     removeFromCart,
     emptyCart,
+    saveCart,
   };
 
   // if there was only one thing in the context, i would just pass it on like value={thing}

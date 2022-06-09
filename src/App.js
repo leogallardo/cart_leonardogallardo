@@ -5,26 +5,24 @@ import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import CartProvider from './context/CartContext';
 import Cart from './components/Cart';
-import CartSummary from './components/CartSummary';
-import CartConfirmation from './components/CartConfirmation';
+import SaleListContainer from './components/SaleListContainer';
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
-        <div className="flex flex-col h-screen">
+    <BrowserRouter>
+      <CartProvider>
+        <div className="flex flex-col min-h-screen bg-gray-100">
           <Navbar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:catId" element={<ItemListContainer />} />
             <Route path="/item/:itemId" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/cart/summary" element={<CartSummary />} />
-            <Route path="/cart/confirmation" element={<CartConfirmation />} />
+            <Route path="/sales" element={<SaleListContainer />} />
           </Routes>
         </div>
-      </BrowserRouter>
-    </CartProvider>
+      </CartProvider>
+    </BrowserRouter>
   );
 }
 
